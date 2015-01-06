@@ -14,11 +14,12 @@ module.exports = function(grunt) {
         browserify: {
             dev: {
                 files: {
-                    'www/js/app.js': 'www/js/components/*.jsx'
+                    'www/js/timtracker.js': 'www/js/**/*.jsx'
                 },
-                options:      {
+                options: {
                     transform: [reactify],
                     browserifyOptions: {
+                        extensions: ['.jsx'],
                         debug: true
                     },
                     watch: true,
@@ -27,10 +28,13 @@ module.exports = function(grunt) {
             },
             prod: {
                 files: {
-                    'www/js/app.js': 'www/js/components/*.jsx'
+                    'www/js/timtracker.js': 'www/js/**/*.jsx'
                 },
-                options:      {
-                    transform: [reactify]
+                options: {
+                    transform: [reactify],
+                    browserifyOptions: {
+                        extensions: ['.jsx']
+                    }
                 }
             }
         },
@@ -42,7 +46,7 @@ module.exports = function(grunt) {
                     'compilation_level': 'SIMPLE_OPTIMIZATIONS'
                 },
                 files: {
-                    'www/js/app.js': 'www/js/app.js'
+                    'www/js/timtracker.js': 'www/js/timtracker.js'
                 }
             }
         }
